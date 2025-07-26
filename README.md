@@ -2,7 +2,7 @@
 
 > **Version:** 1.7.3  
 > **Author:** Rydell Hall  
-> **Last Updated:** July 2025  
+> **README.md Last Updated:** July 2025  
 > **License:** MIT
 
 ---
