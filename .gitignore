@@ -1,0 +1,23 @@
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs and reports
+*.log
+*.tmp
+*.bak
+*.txt
+*.report
+
+# System folders
+$RECYCLE.BIN/
+System Volume Information/
+
+# Temp directories
+temp/
+tmp/
+*.~*
+
+# Git itself
+.git/
