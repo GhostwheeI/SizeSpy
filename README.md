@@ -12,8 +12,8 @@
 `SizeSpy` is a fully functional, menu-driven batch script that scans the disk for the largest files and folders. It's designed for Windows users who want insights into disk usage using **only native tools** – no PowerShell, no third-party apps.
 
 Features include:
-- ✅ Scans user-defined drives
-- ✅ Filters by minimum size (in MB)
+- ✅ Scans user-defined drive
+- ✅ Filters by minimum size (Currently in MB)
 - ✅ Displays top N results
 - ✅ Optionally generates a report file
 - ✅ Customizable via a simple UI loop
