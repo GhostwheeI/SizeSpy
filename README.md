@@ -1,6 +1,4 @@
-Absolutely! Here’s the **entire README.md** content in a clean copy-paste–friendly format – ready for GitHub ✅
 
----
 
 ````markdown
 # 📂 SizeSpy – Disk Usage Scanner in Pure Batch
