@@ -1,6 +1,3 @@
-
-
-````markdown
 # 📂 SizeSpy – Disk Usage Scanner in Pure Batch
 
 > **Version:** 1.7.3  
@@ -36,9 +33,10 @@ Features include:
 ## ⚙️ Installation
 
 Clone the repo (once it's created):
+
 ```bash
 git clone https://github.com/your-username/SizeSpy.git
-````
+```
 
 Then just run the script:
 
@@ -69,12 +67,12 @@ No installation required – just double-click or run from a command line.
 
 ## 🔧 Configuration Options
 
-| Setting          | Description                           | Default   |
-| ---------------- | ------------------------------------- | --------- |
-| `scan_drive`     | The drive letter (with colon) to scan | `C:`      |
-| `min_size_mb`    | Minimum file/folder size to display   | `1024` MB |
-| `display_limit`  | Number of entries to display          | `15`      |
-| `report_enabled` | Whether to create a text report file  | `0` (off) |
+| Setting         | Description                                | Default     |
+|----------------|--------------------------------------------|-------------|
+| `scan_drive`    | The drive letter (with colon) to scan      | `C:`        |
+| `min_size_mb`   | Minimum file/folder size to display        | `1024` MB   |
+| `display_limit` | Number of entries to display               | `15`        |
+| `report_enabled`| Whether to create a text report file       | `0` (off)   |
 
 Settings can be changed interactively during runtime.
 
@@ -83,75 +81,58 @@ Settings can be changed interactively during runtime.
 ## 📁 Output Format
 
 When report mode is enabled, a file is generated in the script directory containing:
-
-* Path of each item
-* Size in bytes and MB
-* Timestamp of last modification
+- Path of each item
+- Size in bytes and MB
+- Timestamp of last modification
 
 ---
 
 ## 🧪 Example Usage Scenarios
 
-* Run `SizeSpy` on a USB drive:
+- Run `SizeSpy` on a USB drive:
+  - Change Drive → `E:`
+  - Minimum Size → `200 MB`
+  - Display Top → `10`
 
-  * Change Drive → `E:`
-  * Minimum Size → `200 MB`
-  * Display Top → `10`
-
-* Scheduled scan to a report:
-
-  * Enable report mode
-  * Use Task Scheduler to run `SizeSpy.bat` daily
+- Scheduled scan to a report:
+  - Enable report mode
+  - Use Task Scheduler to run `SizeSpy.bat` daily
 
 ---
 
 ## 📸 Screenshots
 
-*(Add screenshots here if you want to show the terminal UI or sample output)*
+_(Add screenshots here if you want to show the terminal UI or sample output)_
 
 ---
 
 ## 🚧 Known Limitations
 
-* Only runs on Windows (uses `dir`, `for`, `findstr`, etc.)
-* Cannot recurse symbolic links
-* Does not handle junctions separately
-* Uses simple numeric sorting (not size-aware sort)
+- Only runs on Windows (uses `dir`, `for`, `findstr`, etc.)
+- Cannot recurse symbolic links
+- Does not handle junctions separately
+- Uses simple numeric sorting (not size-aware sort)
 
 ---
 
 ## 🚀 Future Improvements (Planned)
 
-* [ ] PowerShell version for more precise size parsing
-* [ ] Network drive support
-* [ ] Auto-email report
-* [ ] GUI version using HTA or Electron
-* [ ] Multilingual support
+- [ ] PowerShell version for more precise size parsing
+- [ ] Network drive support
+- [ ] Auto-email report
+- [ ] GUI version using HTA or Electron
+- [ ] Multilingual support
 
 ---
 
 ## 🧠 Author & Acknowledgments
 
-Created by **Rydell Hall**
-Assisted by ChatGPT + custom GPT tooling
+Created by **Rydell Hall**  
+Assisted by ChatGPT + custom GPT tooling  
 Special thanks to all batch scripting communities online!
 
 ---
 
 ## 📝 License
 
-This project is licensed under the MIT License. See `LICENSE` for details.
-
-```
-
----
-
-Let me know when you’re ready for:
-
-- 📁 Local folder structure
-- `LICENSE` file generation
-- Git command sequence to upload it privately  
-- Or a `.bat` file that automates the initial `git init → add → commit → push`
-
-You're about to have the cleanest Batch project on GitHub 🚀
-```
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
