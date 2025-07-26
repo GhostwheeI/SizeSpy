@@ -18,19 +18,22 @@ cls
 :: Determine human-readable report status
 if "%report_enabled%"=="1" (set "report_status=Enabled") else (set "report_status=Disabled")
 
-echo ============================================
-echo           DISK SCANNER MAIN MENU
-echo ============================================
+echo ===========================================================================================
+echo                             DISK SCANNER MAIN MENU Version a1.7.3
+echo ===========================================================================================
 echo.
-echo (R) Run                - Perform scan with current settings
-echo (C) Set Preferences    - Change drive, thresholds, etc.
-echo (Q) Quit               - Exit the script
+echo                                   Current Preferences
+echo                         Drive to Scan           = %scan_drive%\
+echo                         Minimum Size Threshold  = %min_size_mb% MB
+echo                         Display Limit           = %display_limit%
+echo                         Report Generation       = %report_status%
 echo.
-echo   Current Preferences:
-echo     Drive to Scan           = %scan_drive%\
-echo     Minimum Size Threshold  = %min_size_mb% MB
-echo     Display Limit           = %display_limit%
-echo     Report Generation       = %report_status%
+echo.
+echo                    (R) Run                - Perform scan with current settings
+echo                    (C) Set Preferences    - Change drive, thresholds, etc.
+echo                    (Q) Quit               - Exit the script
+echo.
+echo.
 echo.
 :: Prompt for menu choice; case-insensitive
 set /p choice=Choice (R/C/Q): 
