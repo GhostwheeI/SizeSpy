@@ -104,34 +104,29 @@ When report mode is enabled, a file is generated in the script directory contain
 
 <img width="1225" height="657" alt="image" src="https://github.com/user-attachments/assets/753770ed-60da-4220-b376-8531d5210be9" />
 
-
-
-
 ---
 
 ## 🚧 Known Limitations
 
-- Only runs on Windows (uses `dir`, `for`, `findstr`, etc.)
-- Cannot recurse symbolic links
-- Does not handle junctions separately
-- Uses simple numeric sorting (not size-aware sort)
+- Folder size calculation is based on parsing `dir /s` output, which is inconsistent across regional settings and can break parsing logic.
+- Output parsing is fragile due to hardcoded assumptions (e.g., position of summary lines).
+- Cannot filter results strictly by *individual* file size — only directory totals.
+- Result sorting is crude; true size-aware sorting is not guaranteed.
+- Variables and menu input logic can break if invalid values or special characters are entered.
+- Script revisions were prone to logic conflicts due to lack of structure and modularity.
 
 ---
 
 ## 🚀 Future Improvements (Planned)
 
-- [ ] PowerShell version for more precise size parsing
-- [ ] Network drive support
-- [ ] Auto-email report
-- [ ] GUI version using HTA or Electron
-- [ ] Multilingual support
+- [ ] Add option to select and delete a file or folder from results
+- [ ] Simplify and modularize internal logic to avoid revision conflicts and improve stability
 
 ---
 
 ## 🧠 Author & Acknowledgments
 
 Created by **Rydell Hall**  
-Assisted by ChatGPT + custom GPT tooling  
 Special thanks to all batch scripting communities online!
 
 ---
