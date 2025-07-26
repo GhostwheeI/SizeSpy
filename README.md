@@ -9,15 +9,16 @@
 
 ## 🔍 Overview
 
-`SizeSpy` is a fully functional, menu-driven batch script that scans the disk for the largest files and folders. It's designed for Windows users who want insights into disk usage using **only native tools** – no PowerShell, no third-party apps.
+`SizeSpy` is a *work-in-progress*, menu-driven batch script that scans a target drive for the largest files and folders. It uses built-in Windows tools (like `dir`, `findstr`, and `for`) to generate basic reports and summaries — no PowerShell or third-party apps required.
 
-Features include:
-- ✅ Scans user-defined drive
-- ✅ Filters by minimum size (Currently in MB)
-- ✅ Displays top N results
-- ✅ Optionally generates a report file
-- ✅ Customizable via a simple UI loop
-- ✅ Runs with no dependencies
+⚠️ This tool is currently under development. Several known issues affect stability, accuracy, and usability. While mostly functional, it is **not production-ready**.
+
+Features (in current state):
+- ✅ Basic drive scan using `dir /s`
+- ✅ Filter results based on size
+- ✅ Menu-based navigation (see below)
+- ✅ Experimental report generation
+- 🧪 Ongoing improvements in logic and accuracy
 
 ---
 
@@ -32,7 +33,7 @@ Features include:
 
 ## ⚙️ Installation
 
-Clone the repo (once it's created):
+Clone the repo:
 
 ```bash
 git clone https://github.com/your-username/SizeSpy.git
@@ -44,23 +45,25 @@ Then just run the script:
 SizeSpy.bat
 ```
 
-No installation required – just double-click or run from a command line.
-
 ---
 
 ## 🖥️ Main Menu Preview
 
 ```
 ============================================
-          DISK SCANNER MAIN MENU
+       DISK SCANNER MAIN MENU Version a1.7.3
 ============================================
 
-(R) Run                - Perform scan with current settings
-(C) Change Drive       - Default = C:
-(S) Set Min Size MB    - Default = 1024 MB
-(D) Display Top N      - Default = 15
-(T) Toggle Report      - Currently: Disabled
-(Q) Quit
+         Current Preferences
+Drive to Scan           = C:Minimum Size Threshold  = 1024 MB
+Display Limit           = 15
+Report Generation       = Disabled
+
+(R) Run             - Perform scan with current settings
+(C) Set Preferences - Change drive, thresholds, etc.
+(Q) Quit            - Exit the script
+
+Choice (R/C/Q):
 ```
 
 ---
@@ -73,8 +76,6 @@ No installation required – just double-click or run from a command line.
 | `min_size_mb`   | Minimum file/folder size to display        | `1024` MB   |
 | `display_limit` | Number of entries to display               | `15`        |
 | `report_enabled`| Whether to create a text report file       | `0` (off)   |
-
-Settings can be changed interactively during runtime.
 
 ---
 
@@ -108,12 +109,13 @@ When report mode is enabled, a file is generated in the script directory contain
 
 ## 🚧 Known Limitations
 
-- Folder size calculation is based on parsing `dir /s` output, which is inconsistent across regional settings and can break parsing logic.
-- Output parsing is fragile due to hardcoded assumptions (e.g., position of summary lines).
-- Cannot filter results strictly by *individual* file size — only directory totals.
-- Result sorting is crude; true size-aware sorting is not guaranteed.
-- Variables and menu input logic can break if invalid values or special characters are entered.
-- Script revisions were prone to logic conflicts due to lack of structure and modularity.
+- Output parsing may break depending on system locale or regional formats (e.g. commas in numbers).
+- Folder size is estimated from cumulative `dir` output and may include unwanted subfolders.
+- Sorting is text-based and may not reflect actual largest files/folders in order.
+- Input validation is fragile; bad or unexpected input can break menu logic.
+- No confirmation prompt exists for any destructive actions.
+- Menu logic and core scan logic have overlapping responsibilities — difficult to maintain or modularize.
+- Error handling is minimal.
 
 ---
 
