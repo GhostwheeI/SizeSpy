@@ -87,6 +87,7 @@ Top 15 folders
 ## ✅ Todo / Improvements
 
 - [ ] Allow scanning multiple drives at once
+- [ ] Implement parallel processing
 - [ ] Save/load scan profiles
 - [ ] Improve progress indication per-folder
 - [ ] Replace slow folder size calculation with faster PowerShell logic
