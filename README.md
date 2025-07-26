@@ -102,7 +102,8 @@ When report mode is enabled, a file is generated in the script directory contain
 
 ## 📸 Screenshots
 
-<img width="1231" height="667" alt="image" src="https://github.com/user-attachments/assets/4106018e-26b0-4d3f-8900-33be860a58cb" />
+<img width="1225" height="657" alt="image" src="https://github.com/user-attachments/assets/753770ed-60da-4220-b376-8531d5210be9" />
+
 
 
 
