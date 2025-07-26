@@ -5,6 +5,21 @@ setlocal EnableDelayedExpansion
 
 title Disk Scanner v1.7.3 - By Rydell Hall
 
+:: ---------- Purpose ----------
+:: Disk Scanner Tool – Version 1.7.3
+:: This script is designed to help users analyze disk space usage by scanning a selected drive
+:: and identifying the largest files and folders that meet user-defined criteria.
+::
+:: Key capabilities include:
+:: - Selecting which drive to scan
+:: - Filtering by minimum file/folder size (in MB)
+:: - Limiting the number of results displayed
+:: - Optionally generating a scan report
+::
+:: It features a menu-driven interface for configuring preferences and running scans,
+:: making it accessible for both technical and non-technical users.
+:: The tool is especially helpful for identifying storage-heavy items during cleanup or audits.
+
 :: ---------- Defaults ----------
 :: These are the initial settings; users can override them in the preferences menu.
 set "scan_drive=C:"          :: The drive letter (with colon) to scan by default
