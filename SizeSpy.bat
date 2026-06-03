@@ -1,5 +1,6 @@
 @echo off
 setlocal EnableDelayedExpansion
+for /f %%A in ('copy /Z "%~f0" nul') do set "CR=%%A"
 :: SizeSpy - Version 1.7.7 (Spinner-based scanning feedback)
 :: Author: Rydell Hall
 
@@ -82,7 +83,7 @@ for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
     set /a progress+=1
     set /a spinpos=(spinpos+1) %% 4
     call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    <nul set /p=!CR!Scanning [!progress!/!total_files!] !sym!
 )
 echo.
 echo Total qualifying files: !progress!
