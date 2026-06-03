@@ -1,0 +1,3 @@
+## 2024-03-24 - Batch File Loop Performance
+**Learning:** `call` statements in a tight batch file `for` loop have an enormous performance penalty due to context switching overhead in the CMD interpreter. In `SizeSpy.bat`, the `call set "sym=%%spinner:~!spinpos!,1%%"` command executes on every single file scanned, blocking the loop significantly.
+**Action:** Replace dynamic `call set` or `call :label` operations in `for` loops with mathematical modulus operations and inline if-statements (or substring extraction using delayed expansion tricks) where possible to drastically improve scan speed on large numbers of files.
