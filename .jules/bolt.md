@@ -1,0 +1,3 @@
+## 2024-06-25 - [Batch Script Optimization]
+**Learning:** In Windows Batch scripts, console I/O (`<nul set /p=...`) and dynamic evaluation via `call set` are extremely slow and can bottleneck tight loops (like file iteration). By updating progress indicators only periodically (e.g., every 100 items) and avoiding `call set` with an inner `for` variable, we save substantial evaluation time.
+**Action:** Optimized `SizeSpy.bat` to only refresh the spinning progress indicator every 100 files and replaced `call set` substring evaluation with a faster `for %%I in (!var!) do set "sym=!str:~%%I,1!"` idiom.

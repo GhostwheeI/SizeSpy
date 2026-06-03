@@ -80,9 +80,14 @@ for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
     set "size=%%~zF"
     if !size! geq !min_bytes! echo !size! "%%F" >> "%filetmp%"
     set /a progress+=1
-    set /a spinpos=(spinpos+1) %% 4
-    call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    :: Optimization: Redraw spinner every 100 files to avoid severe console I/O bottleneck.
+    :: 'call set' is slow, so we use a 'for' loop variable to safely evaluate the substring.
+    set /a "progMod=progress %% 100"
+    if !progMod! equ 0 (
+        set /a "spinpos=(spinpos+1) %% 4"
+        for %%I in (!spinpos!) do set "sym=!spinner:~%%I,1!"
+        <nul set /p=Scanning [!progress!/!total_files!] !sym!
+    )
 )
 echo.
 echo Total qualifying files: !progress!
