@@ -1,8 +1,8 @@
-﻿# SizeSpy - File & Folder Size Scanner (Batch)
+# SizeSpy - File & Folder Size Scanner (Batch)
 
-**Version**: 1.7.7  
-**Author**: Rydell Hall  
-**Platform**: Windows (CMD / Batch Script)  
+**Version**: 1.8.0
+**Author**: Rydell Hall
+**Platform**: Windows (CMD / Batch Script)
 **License**: MIT
 
 ---
@@ -87,7 +87,7 @@ Output files (when enabled):
 
 - [x] Support multiple drives
 - [x] Export to CSV and Markdown
-- [ ] Implement true progress spinner / percent complete
+- [x] Implement true progress spinner / percent complete
 - [ ] Auto-launch results in Notepad / Excel
 - [ ] Save/load scan profiles
 - [ ] Parallelize folder size calculations
@@ -97,4 +97,3 @@ Output files (when enabled):
 ## ðŸªª License
 
 MIT License â€” see LICENSE file for details.
-

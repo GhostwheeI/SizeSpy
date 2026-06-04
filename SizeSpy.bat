@@ -1,9 +1,12 @@
 @echo off
 setlocal EnableDelayedExpansion
-:: SizeSpy - Version 1.7.7 (Spinner-based scanning feedback)
+:: SizeSpy - Version 1.8.0 (Spinner-based scanning feedback)
 :: Author: Rydell Hall
 
 set "script_dir=%~dp0"
+
+:: Generate Carriage Return character for progress spinner
+for /f %%a in ('copy /Z "%~f0" nul') do set "CR=%%a"
 
 :: Defaults
 set "scan_drives=C"
@@ -80,9 +83,11 @@ for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
     set "size=%%~zF"
     if !size! geq !min_bytes! echo !size! "%%F" >> "%filetmp%"
     set /a progress+=1
+    set pct=0
+    if !total_files! gtr 0 set /a pct=progress*100/total_files
     set /a spinpos=(spinpos+1) %% 4
-    call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    for %%P in (!spinpos!) do set "sym=!spinner:~%%P,1!"
+    <nul set /p="!CR!Scanning [!progress!/!total_files!] (!pct!%%) !sym!      "
 )
 echo.
 echo Total qualifying files: !progress!
@@ -95,7 +100,7 @@ exit /b
 
 :fancytitle
 echo ==============================================
-echo ^|              S I Z E S P Y   v1.7.7         ^|
+echo ^|              S I Z E S P Y   v1.8.0         ^|
 echo ==============================================
 echo.
 exit /b
