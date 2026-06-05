@@ -67,10 +67,7 @@ del "%filetmp%" 2>nul & del "%fileout%" 2>nul
 
 for /f %%t in ('powershell -nologo -command "(Get-Date).ToString(\"HH:mm:ss\")"') do set start_time=%%t
 
-:: Precompute total files for better progress tracking
-set /a total_files=0
-for /F %%F in ('dir /S /B /A:-D "%drive%\" ^| find /C /V ""') do set total_files=%%F
-
+:: Removed duplicate total_files precomputation to avoid doubling I/O wait times
 set /a progress=0
 set "spinner=-\\|/"
 set /a spinpos=0
@@ -82,7 +79,7 @@ for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
     set /a progress+=1
     set /a spinpos=(spinpos+1) %% 4
     call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    <nul set /p=Scanning [!progress!] !sym!
 )
 echo.
 echo Total qualifying files: !progress!
