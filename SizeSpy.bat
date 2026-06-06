@@ -63,30 +63,35 @@ echo.
 echo === SCANNING DRIVE: %drive% ===
 set "filetmp=%TEMP%\ss_files.txt"
 set "fileout=%TEMP%\ss_files_sorted.txt"
-del "%filetmp%" 2>nul & del "%fileout%" 2>nul
+set "dirlist=%TEMP%\ss_dirlist.txt"
+del "%filetmp%" 2>nul & del "%fileout%" 2>nul & del "%dirlist%" 2>nul
 
 for /f %%t in ('powershell -nologo -command "(Get-Date).ToString(\"HH:mm:ss\")"') do set start_time=%%t
 
+:: ⚡ Bolt: Cache drive traversal to avoid O(2N) disk I/O bottleneck
+dir /S /B /A:-D "%drive%\" > "%dirlist%"
+
 :: Precompute total files for better progress tracking
 set /a total_files=0
-for /F %%F in ('dir /S /B /A:-D "%drive%\" ^| find /C /V ""') do set total_files=%%F
+for /F %%F in ('type "%dirlist%" ^| find /C /V ""') do set total_files=%%F
 
 set /a progress=0
 set "spinner=-\\|/"
 set /a spinpos=0
 
 :: Begin scan
-for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
+for /F "usebackq delims=" %%F in ("%dirlist%") do (
     set "size=%%~zF"
     if !size! geq !min_bytes! echo !size! "%%F" >> "%filetmp%"
     set /a progress+=1
     set /a spinpos=(spinpos+1) %% 4
     call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    <nul set /p=Scanning [!progress!/!total_files!] !sym!
 )
 echo.
 echo Total qualifying files: !progress!
 sort /R "%filetmp%" > "%fileout%"
+del "%dirlist%" 2>nul
 
 :: Rest of display logic omitted for brevity ...
 echo Done scanning %drive%
