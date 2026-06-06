@@ -1,0 +1,3 @@
+## 2024-06-06 - Batch File I/O Optimization
+**Learning:** In Windows Batch scripts, writing to a file using the `>>` append operator inside a loop (`for /F ...`) introduces massive I/O overhead because the file handle is opened, appended to, and closed on every single iteration. Furthermore, string manipulation via `call set` is extremely slow. Console updates via `<nul set /p` also cause significant bottlenecks if done per-iteration on large file sets.
+**Action:** Wrapped the entire loop block inside parenthesis and redirected output once `( ... ) > file.txt`. Replaced `call set` with `for %%S` loop expansion for the progress spinner, and throttled the spinner's console output using modulo arithmetic to only update every 100 iterations.
