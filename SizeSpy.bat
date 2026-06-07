@@ -80,9 +80,12 @@ for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
     set "size=%%~zF"
     if !size! geq !min_bytes! echo !size! "%%F" >> "%filetmp%"
     set /a progress+=1
-    set /a spinpos=(spinpos+1) %% 4
-    call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    set /a "mod=progress %% 50"
+    if !mod! equ 0 (
+        set /a spinpos=^(spinpos+1^) %% 4
+        for %%P in (!spinpos!) do set "sym=!spinner:~%%P,1!"
+        <nul set /p=Scanning [!progress!/!total_files!] !sym!
+    )
 )
 echo.
 echo Total qualifying files: !progress!
