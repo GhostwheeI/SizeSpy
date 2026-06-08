@@ -34,15 +34,24 @@ if /I "%choice%"=="Q" goto end
 goto mainmenu
 
 :setdrives
-set /p scan_drives=Enter drive letters (comma-separated, e.g. C,D,E): 
+set "scan_drives_prev=%scan_drives%"
+set "scan_drives="
+set /p scan_drives=Enter drive letters (comma-separated, e.g. C,D,E) [Current: %scan_drives_prev%]:
+if not defined scan_drives set "scan_drives=%scan_drives_prev%"
 goto mainmenu
 
 :setminsize
-set /p min_size_mb=Enter minimum file/folder size in MB: 
+set "min_size_mb_prev=%min_size_mb%"
+set "min_size_mb="
+set /p min_size_mb=Enter minimum file/folder size in MB [Current: %min_size_mb_prev%]:
+if not defined min_size_mb set "min_size_mb=%min_size_mb_prev%"
 goto mainmenu
 
 :setlimit
-set /p display_limit=Enter number of items to display: 
+set "display_limit_prev=%display_limit%"
+set "display_limit="
+set /p display_limit=Enter number of items to display [Current: %display_limit_prev%]:
+if not defined display_limit set "display_limit=%display_limit_prev%"
 goto mainmenu
 
 :togglereport
@@ -80,9 +89,12 @@ for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
     set "size=%%~zF"
     if !size! geq !min_bytes! echo !size! "%%F" >> "%filetmp%"
     set /a progress+=1
-    set /a spinpos=(spinpos+1) %% 4
-    call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    set /a "mod=progress %% 100"
+    if !mod! equ 0 (
+        set /a spinpos=(spinpos+1) %% 4
+        for %%P in (!spinpos!) do set "sym=!spinner:~%%P,1!"
+        <nul set /p=Scanning [!progress!/!total_files!] !sym!
+    )
 )
 echo.
 echo Total qualifying files: !progress!

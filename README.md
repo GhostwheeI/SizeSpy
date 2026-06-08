@@ -1,8 +1,11 @@
-﻿# SizeSpy - File & Folder Size Scanner (Batch)
+# SizeSpy - File & Folder Size Scanner (Batch)
 
-**Version**: 1.7.7  
-**Author**: Rydell Hall  
-**Platform**: Windows (CMD / Batch Script)  
+![Platform: Windows](https://img.shields.io/badge/Platform-Windows-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
+**Version**: 1.8.0
+**Author**: Rydell Hall
+**Platform**: Windows (CMD / Batch Script)
 **License**: MIT
 
 ---
@@ -47,6 +50,21 @@ Designed for simplicity and portability, it's ideal for:
    - [2] Set minimum size threshold
    - [3] Set how many results to display
    - [R] Run the scan
+
+### Usage Example
+From the command line (if integrated into your path):
+```cmd
+C:\> SizeSpy.bat
+```
+Follow the interactive prompts to configure your scan. The defaults are set to scan the `C` drive for items larger than `1024 MB`, displaying the top `15` results.
+
+---
+
+## ðŸ›¡ï¸ Best Practices
+
+- **Run as Administrator:** Required to accurately read system files and hidden directories.
+- **Limit scan drives:** Scanning an entire drive can be time-consuming; stick to the drives you need.
+- **Export Results:** Enable Report Generation to save your findings for later analysis.
 
 ---
 
@@ -97,4 +115,3 @@ Output files (when enabled):
 ## ðŸªª License
 
 MIT License â€” see LICENSE file for details.
-
