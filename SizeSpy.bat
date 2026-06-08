@@ -34,15 +34,21 @@ if /I "%choice%"=="Q" goto end
 goto mainmenu
 
 :setdrives
-set /p scan_drives=Enter drive letters (comma-separated, e.g. C,D,E): 
+set "input="
+set /p "input=Enter drive letters (comma-separated, e.g. C,D,E) [Current: %scan_drives%]: "
+if defined input set "scan_drives=%input%"
 goto mainmenu
 
 :setminsize
-set /p min_size_mb=Enter minimum file/folder size in MB: 
+set "input="
+set /p "input=Enter minimum file/folder size in MB [Current: %min_size_mb%]: "
+if defined input set "min_size_mb=%input%"
 goto mainmenu
 
 :setlimit
-set /p display_limit=Enter number of items to display: 
+set "input="
+set /p "input=Enter number of items to display [Current: %display_limit%]: "
+if defined input set "display_limit=%input%"
 goto mainmenu
 
 :togglereport
@@ -82,7 +88,7 @@ for /F "delims=" %%F in ('dir /S /B /A:-D "%drive%\"') do (
     set /a progress+=1
     set /a spinpos=(spinpos+1) %% 4
     call set "sym=%%spinner:~!spinpos!,1%%"
-    <nul set /p=Scanning [!progress!/!total_files!] !sym!     
+    <nul set /p=Scanning [!progress!/!total_files!] !sym!
 )
 echo.
 echo Total qualifying files: !progress!

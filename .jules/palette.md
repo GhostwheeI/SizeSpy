@@ -1,0 +1,3 @@
+## 2024-05-15 - [CLI Prompt Variable State Persistence]
+**Learning:** In Windows batch scripts (`set /p`), input variables retain their previous values if the user presses enter (providing empty input). This can cause confusion and accidental configuration overrides if the variable is not cleared prior to prompting.
+**Action:** Always clear the input variable (`set "input="`) before a `set /p` prompt, and assign the new value conditionally (`if defined input set "var=%input%"`). Additionally, it greatly improves UX to show the current variable value in the prompt context like `[Current: %var%]`.
