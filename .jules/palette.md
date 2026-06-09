@@ -1,0 +1,3 @@
+## 2024-05-14 - CLI Variable Persistence UX
+**Learning:** In Windows batch scripts, input variables prompted via `set /p` persist their previous values if the user enters empty input (e.g. just presses Enter). This can lead to unexpected behavior and a poor user experience. Also, providing context like `[Current: %var%]` drastically improves the UX of text-based configuration menus.
+**Action:** When working on Windows CLI tools, always clear temporary input variables before prompting, and use fallback logic (`if not "%new_val%"==""`) to preserve existing values. Always display the current value when prompting for a new one.
