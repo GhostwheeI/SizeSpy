@@ -7,7 +7,7 @@
 
 ---
 
-## ðŸ“„ Description
+## 📄 Description
 
 SizeSpy is a standalone Windows batch utility that scans one or more drives for the **largest files and folders** above a configurable size threshold.
 
@@ -18,19 +18,19 @@ Designed for simplicity and portability, it's ideal for:
 
 ---
 
-## âœ¨ Features
+## ✨ Features
 
-- âœ… Top N Largest Files & Folders
-- âœ… Minimum Size Thresholds (in MB)
-- âœ… Multi-Drive Selection (e.g. C,D,E)
-- âœ… Optional Report Generation (TXT / CSV / Markdown)
-- âœ… Export Results to .csv and .md
-- âœ… Visual Output and Menu Controls
-- âš ï¸ Progress Spinner (in development)
+- ✅ Top N Largest Files & Folders
+- ✅ Minimum Size Thresholds (in MB)
+- ✅ Multi-Drive Selection (e.g. C,D,E)
+- ✅ Optional Report Generation (TXT / CSV / Markdown)
+- ✅ Export Results to .csv and .md
+- ✅ Visual Output and Menu Controls
+- ✅ Progress Spinner
 
 ---
 
-## ðŸ–¥ Requirements
+## 🖥 Requirements
 
 - Windows 10/11
 - Native CMD / Batch environment
@@ -38,10 +38,10 @@ Designed for simplicity and portability, it's ideal for:
 
 ---
 
-## ðŸš€ Getting Started
+## 🚀 Getting Started
 
 1. **Download SizeSpy.bat**
-2. **Right-click â†’ Run as Administrator** *(recommended)*
+2. **Right-click -> Run as Administrator** *(recommended)*
 3. Navigate the interactive menu to:
    - [1] Set drives (e.g. C,D,E)
    - [2] Set minimum size threshold
@@ -50,7 +50,7 @@ Designed for simplicity and portability, it's ideal for:
 
 ---
 
-## âš™ Preferences Explained
+## ⚙️ Preferences Explained
 
 | Option            | Description                                                |
 |-------------------|------------------------------------------------------------|
@@ -61,7 +61,7 @@ Designed for simplicity and portability, it's ideal for:
 
 ---
 
-## ðŸ“Š Output Examples
+## 📊 Output Examples
 
 `
 Top 10 files (>= 100 MB)
@@ -83,18 +83,18 @@ Output files (when enabled):
 
 ---
 
-## ðŸ§© Todo / Improvements
+## 🧩 Todo / Improvements
 
 - [x] Support multiple drives
 - [x] Export to CSV and Markdown
-- [ ] Implement true progress spinner / percent complete
+- [x] Implement true progress spinner / percent complete
 - [ ] Auto-launch results in Notepad / Excel
 - [ ] Save/load scan profiles
 - [ ] Parallelize folder size calculations
 
 ---
 
-## ðŸªª License
+## 🪪 License
 
-MIT License â€” see LICENSE file for details.
+MIT License - see LICENSE file for details.
 
