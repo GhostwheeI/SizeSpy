@@ -25,6 +25,7 @@ echo.
 echo    [R] Run Scan
 
 echo    [Q] Quit
+set "choice="
 set /p choice=Select an option: 
 if /I "%choice%"=="1" goto setdrives
 if /I "%choice%"=="2" goto setminsize
@@ -35,15 +36,21 @@ if /I "%choice%"=="Q" goto end
 goto mainmenu
 
 :setdrives
-set /p scan_drives=Enter drive letters (comma-separated, e.g. C,D,E): 
+set "new_scan_drives="
+set /p new_scan_drives=Enter drive letters (comma-separated, e.g. C,D,E) [Current: %scan_drives%]:
+if not "%new_scan_drives%"=="" set "scan_drives=%new_scan_drives%"
 goto mainmenu
 
 :setminsize
-set /p min_size_mb=Enter minimum file/folder size in MB: 
+set "new_min_size_mb="
+set /p new_min_size_mb=Enter minimum file/folder size in MB [Current: %min_size_mb%]:
+if not "%new_min_size_mb%"=="" set "min_size_mb=%new_min_size_mb%"
 goto mainmenu
 
 :setlimit
-set /p display_limit=Enter number of items to display: 
+set "new_display_limit="
+set /p new_display_limit=Enter number of items to display [Current: %display_limit%]:
+if not "%new_display_limit%"=="" set "display_limit=%new_display_limit%"
 goto mainmenu
 
 :togglereport
